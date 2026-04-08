@@ -81,17 +81,13 @@ if submitted:
         #     st.stop()
      
         with open('kmeans_model_bigfive_gm.pkl', 'rb') as f:
-        kmeans_model = pickle.load(f)
+            kmeans_model = pickle.load(f)
 
         #cargamos el standarizador
         with open('scaler_st_bigfive_gm.pkl', 'rb') as f:
-        scaler = pickle.load(f)
+            scaler = pickle.load(f)
 
-#cargamos el standarizador
- 
-with open('scaler_st_bigfive.pkl', 'rb') as f:
-    scaler = pickle.load(f)
- 
+
         # Standardize the user's scores
         user_scores_scaled = scaler.transform(user_scores)
         user_scores_scaled_df = pd.DataFrame(user_scores_scaled, columns=user_scores.columns)
