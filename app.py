@@ -2,6 +2,12 @@ import streamlit as st
 import pandas as pd
 import pickle
 
+#Cargamos el modelo de predicción
+with open('kmeans_model_bigfive.pkl', 'rb') as f:
+    kmeans_model = pickle.load(f)
+ 
+with open('scaler_st_bigfive.pkl', 'rb') as f:
+    scaler = pickle.load(f)  
 
 st.set_page_config(layout="wide")
 
