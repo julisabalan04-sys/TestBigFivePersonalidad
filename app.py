@@ -8,6 +8,11 @@ with open('kmeans_model_bigfive.pkl', 'rb') as f:
  
 with open('scaler_st_bigfive.pkl', 'rb') as f:
     scaler = pickle.load(f)  
+    
+cluster_means = pd.DataFrame(
+    kmeans_model.cluster_centers_,
+    columns=['ext_score', 'neu_score', 'agr_score', 'con_score', 'opn_score']
+)
 
 st.set_page_config(layout="wide")
 
