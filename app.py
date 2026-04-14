@@ -100,6 +100,7 @@ opn_questions = {
 }
 
 lista_preguntas = [ext_questions, neu_questions,agr_questions,con_questions,opn_questions]
+
 lista_clusters = [
     "El grupo 0 está compuesto por personalidades muy introvertidas, bastante nerviosas, amigables y creativas, pero ni descuidadas ni organizadas.",
     "El grupo 1 está formado por personas muy extrovertidas, amigables, organizadas y curiosas, además de ser las más seguras de sí mismas.",
@@ -172,6 +173,9 @@ if submitted:
         # Predict the cluster
         predicted_cluster = kmeans_model.predict(user_scores_scaled)[0]
         st.write(f"### Perteneces al Cluster: {predicted_cluster}")
+        
+        descripcion = lista_clusters[predicted_cluster]
+        st.success(f"🧠 {descripcion}")
 
         # Display cluster description/mean values
         st.write("#### Valores promedio de los rasgos para tu Cluster:")
