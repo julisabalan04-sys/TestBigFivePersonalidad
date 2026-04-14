@@ -2,6 +2,13 @@ import streamlit as st
 import pandas as pd
 import pickle
 
+#Cargamos el modelo de predicción
+with open('kmeans_model_bigfive_gm.pkl', 'rb') as f:
+    kmeans_model = pickle.load(f)
+ 
+with open('scaler_st_bigfive_gm.pkl', 'rb') as f:
+    scaler = pickle.load(f)  
+
 st.set_page_config(layout="wide")
 
 st.title("Test de Personalidad Big Five")
@@ -151,6 +158,7 @@ if submitted:
 
         # Standardize the user's scores
         user_scores_scaled = scaler.transform(user_scores)
+        user_scores_scaled_df = pd.DataFrame(user_scores_scaled, columns=user_scores.columns)
 
         st.write("### Puntuaciones escaladas (estandarizadas):")
         st.dataframe(user_scores_scaled_df)
