@@ -149,8 +149,8 @@ if submitted:
         #     st.error("Error: Scaler o modelo K-Means no encontrados en el entorno.")
         #     st.stop()
 
-        # Standardize the user's scoresuser_scores_scaled = scaler.transform(user_scores)
-        user_scores_scaled_df = pd.DataFrame(user_scores_scaled, columns=user_scores.columns)
+        # Standardize the user's scores
+        user_scores_scaled = scaler.transform(user_scores)
 
         st.write("### Puntuaciones escaladas (estandarizadas):")
         st.dataframe(user_scores_scaled_df)
